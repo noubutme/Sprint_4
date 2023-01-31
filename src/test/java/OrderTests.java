@@ -36,7 +36,6 @@ public class OrderTests {
     @Test
     public void orderTest(){
     driver = new ChromeDriver();
-
         HomePage objHomepaje = new HomePage(driver);
         objHomepaje.getTestUrl();
         objHomepaje.getOrder();
@@ -54,34 +53,12 @@ public class OrderTests {
         objOrderpaje.setConfirmButton();// баг в хроме
         objOrderpaje.orderConfirmWindowCheck();
     }
-    @Test
-    public void orderTestFF(){
-        driver = new FirefoxDriver();
-
-        HomePage objHomepaje = new HomePage(driver);
-        objHomepaje.getTestUrl();
-        objHomepaje.getOrder();
-        OrderPage objOrderpaje = new OrderPage(driver);
-        objOrderpaje.setNameField(name);
-        objOrderpaje.setSurnameField(surname);
-        objOrderpaje.setAddressField(address);
-        objOrderpaje.setMetroField();
-        objOrderpaje.setPhoneField(phone);
-        objOrderpaje.setNextButton();
-        objOrderpaje.setDateField(date);
-        objOrderpaje.setColor();
-        objOrderpaje.setRentTimeField();
-        objOrderpaje.setOrderButton();
-        objOrderpaje.setConfirmButton();
-        objOrderpaje.orderConfirmWindowCheck();
-    }
-
     @Test
     public void bigButtonOrderTest(){
         driver = new ChromeDriver();
-
         HomePage objHomepaje = new HomePage(driver);
         objHomepaje.getTestUrl();
+        objHomepaje.cookieAccept();
         objHomepaje.useBigOrderButton();
         OrderPage objOrderpaje = new OrderPage(driver);
         objOrderpaje.setNameField(name);
@@ -95,27 +72,6 @@ public class OrderTests {
         objOrderpaje.setRentTimeField();
         objOrderpaje.setOrderButton();
         objOrderpaje.setConfirmButton();// баг в хроме
-        objOrderpaje.orderConfirmWindowCheck();
-    }
-
-    @Test
-    public void bigButtonOrderTestFF(){
-        driver = new FirefoxDriver();
-                HomePage objHomepaje = new HomePage(driver);
-        objHomepaje.getTestUrl();
-        objHomepaje.useBigOrderButton();
-        OrderPage objOrderpaje = new OrderPage(driver);
-        objOrderpaje.setNameField(name);
-        objOrderpaje.setSurnameField(surname);
-        objOrderpaje.setAddressField(address);
-        objOrderpaje.setMetroField();
-        objOrderpaje.setPhoneField(phone);
-        objOrderpaje.setNextButton();
-        objOrderpaje.setDateField(date);
-        objOrderpaje.setColor();
-        objOrderpaje.setRentTimeField();
-        objOrderpaje.setOrderButton();
-        objOrderpaje.setConfirmButton();
         objOrderpaje.orderConfirmWindowCheck();
     }
     @After

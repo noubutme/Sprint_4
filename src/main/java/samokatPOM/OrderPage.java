@@ -6,20 +6,21 @@ import org.openqa.selenium.WebDriver;
 
 public class OrderPage {
     private WebDriver driver;
-    private By nameField = By.xpath("//*[@id=\"root\"]/div/div[2]/div[2]/div[1]/input");
-    private By surnameField = By.xpath("//*[@id=\"root\"]/div/div[2]/div[2]/div[2]/input");
-    private By adressField = By.xpath("//*[@id=\"root\"]/div/div[2]/div[2]/div[3]/input");
-    private By metroField = By.xpath("//*[@id=\"root\"]/div/div[2]/div[2]/div[4]/div/div/input");
-    private By phoneField = By.xpath("//*[@id=\"root\"]/div/div[2]/div[2]/div[5]/input");
 
-    private By nextButton = By.xpath("//*[@id=\"root\"]/div/div[2]/div[3]/button");
+    private By nameField = By.xpath(".//input[@placeholder='* Имя']");
+    private By surnameField = By.xpath(".//input[@placeholder='* Фамилия']");
+    private By adressField = By.xpath(".//input[@placeholder='* Адрес: куда привезти заказ']");
+    private By metroField = By.xpath(".//input[@placeholder='* Станция метро']");
+    private By phoneField = By.xpath(".//input[@placeholder='* Телефон: на него позвонит курьер']");
 
-    private By dateField = By.xpath("//*[@id=\"root\"]/div/div[2]/div[2]/div[1]/div/div/input");
-    private By rentTimeField = By.xpath("//*[@id=\"root\"]/div/div[2]/div[2]/div[2]/div/div[1]");
+    private By nextButton = By.xpath(".//button[text()='Далее']");
 
-    private By orderButton = By.xpath("//*[@id=\"root\"]/div/div[2]/div[3]/button[2]");
+    private By dateField = By.xpath(".//input[@placeholder='* Когда привезти самокат']");
+    private By rentTimeField = By.xpath(".//div[@class='Dropdown-placeholder']");//
 
-    private By ConfirmButton = By.xpath("//*[@id=\"root\"]/div/div[2]/div[5]/div[2]/button[2]");
+    private By orderButton = By.xpath("//button[@class='Button_Button__ra12g Button_Middle__1CSJM']");
+
+    private By ConfirmButton = By.xpath(".//button[text()='Да']");
 
     public OrderPage(WebDriver driver){
         this.driver = driver;
@@ -68,7 +69,7 @@ public class OrderPage {
         Assert.assertTrue(driver.findElement(rentTimeField).isDisplayed());
         Assert.assertTrue(driver.findElement(rentTimeField).isEnabled());
         driver.findElement(rentTimeField).click();
-        driver.findElement(By.xpath("//*[@id=\"root\"]/div/div[2]/div[2]/div[2]/div[2]/div[1]")).click();
+        driver.findElement(By.xpath("//div[text()='сутки']")).click(); //вместо "суток" можно выбрать и вписать другой имеющийся период;
     }
     public void setColor(){
         driver.findElement(By.xpath("//*[@id=\"black\"]")).click();
