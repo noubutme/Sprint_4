@@ -17,8 +17,10 @@ public class OrderPage {
 
     private By dateField = By.xpath(".//input[@placeholder='* Когда привезти самокат']");
     private By rentTimeField = By.xpath(".//div[@class='Dropdown-placeholder']");//
-
+    private By colorBlack = By.xpath("//*[@id=\"black\"]");
+    private By colorGrey = By.xpath("//*[@id=\"grey\"]");
     private By orderButton = By.xpath("//button[@class='Button_Button__ra12g Button_Middle__1CSJM']");
+    private By confirmTitle = By.xpath(".//div[text()='Заказ оформлен']");
 
     private By ConfirmButton = By.xpath(".//button[text()='Да']");
 
@@ -65,14 +67,14 @@ public class OrderPage {
 
     }
 
-    public void setRentTimeField() {
+    public void setRentTimeField(String rentTime) {
         Assert.assertTrue(driver.findElement(rentTimeField).isDisplayed());
         Assert.assertTrue(driver.findElement(rentTimeField).isEnabled());
         driver.findElement(rentTimeField).click();
-        driver.findElement(By.xpath("//div[text()='сутки']")).click(); //вместо "суток" можно выбрать и вписать другой имеющийся период;
+        driver.findElement(By.xpath("//div[text()='"+rentTime+"']")).click();
     }
     public void setColor(){
-        driver.findElement(By.xpath("//*[@id=\"black\"]")).click();
+        driver.findElement(colorBlack).click();
     }
     public void setOrderButton(){
         driver.findElement(orderButton).click();
@@ -87,6 +89,6 @@ public class OrderPage {
         driver.findElement(ConfirmButton).click();
     }
     public void orderConfirmWindowCheck(){
-        Assert.assertTrue("Что-то пошло не так",driver.findElement(By.xpath(".//div[text()='Заказ оформлен']")).isDisplayed());
+        Assert.assertTrue("Что-то пошло не так",driver.findElement(confirmTitle).isDisplayed());
     }
 }
